@@ -1,0 +1,14 @@
+.main-header-container{
+    background-color:  #FBD062;
+    height: auto;
+    clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
+}
+.left-content{
+    margin-left: 135px;
+    margin-top: 100px;
+    font-weight: 700px;
+}
+.bottom-text{
+    margin-left: 135px;
+    margin-top: 23px;
+}

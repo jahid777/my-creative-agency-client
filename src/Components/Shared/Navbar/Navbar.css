@@ -1,0 +1,9 @@
+.main-button {
+  height: 44px;
+  width: 134px;
+  background-color: #111430;
+  color: white;
+  border-radius: 5px;
+  padding: 10px, 47px, 10px, 47px;
+}
+

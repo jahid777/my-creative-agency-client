@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import PrivateRoute from './Components/Login/PrivateRoute';
+import MainOrderPage from './Components/OrderPage/MainOrderPage/MainOrderPage';
+import Service from './Components/Service/Service';
+import ServiceData from './Components/ServiceData/ServiceData';
+import NotFound from './Components/Shared/NotFound/NotFound';
+import OrderList from './Components/OrderPage/OrderList/OrderList';
 
-function App() {
+ export const UserContext = createContext();
+ export const ServiceContext = createContext();
+const App = () => {
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const [serviceCard, setServiceCard] = useState({});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}> 
+    <ServiceContext.Provider value={[serviceCard, setServiceCard]}>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+           <Home></Home>
+        </Route>
+
+        <PrivateRoute path="/mainOrderPage">
+           <MainOrderPage></MainOrderPage>
+        </PrivateRoute>
+
+        <PrivateRoute path="/service">
+           <Service></Service>
+        </PrivateRoute>
+
+        <PrivateRoute path="/orderList">
+           <OrderList></OrderList>
+        </PrivateRoute>
+
+        <PrivateRoute path="/serviceData">
+           <ServiceData></ServiceData>
+        </PrivateRoute>
+
+        <Route path="/login">
+           <Login></Login>
+        </Route>
+
+        <Route path="/">
+           <NotFound></NotFound>
+        </Route>
+      </Switch>
+    </Router>
+    </ServiceContext.Provider>
+    </UserContext.Provider>
   );
-}
+};
 
 export default App;

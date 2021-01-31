@@ -1,0 +1,6 @@
+@media(max-width: 700px){
+    .card-deck-style{
+        margin-left: 30px!important;
+        margin-right: 30px!important;
+    }
+}
