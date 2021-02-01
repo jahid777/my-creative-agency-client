@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from '../Carousel/Carousel';
+import ClientsReview from '../ClientsReview/ClientsReview';
 import FeedBack from '../FeedBack/FeedBack';
 import Header from '../Header/Header';
 import LogoImage from '../LogoImage/LogoImage';
@@ -16,6 +17,7 @@ const Home = () => {
             <Service></Service>
             <Carousel></Carousel>
             <FeedBack></FeedBack>
+            <ClientsReview></ClientsReview>
             <Footer></Footer>
         </div>
     );

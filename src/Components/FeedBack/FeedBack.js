@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import client1 from '../../images/customer-1.png';
 import client2 from '../../images/customer-2.png';
 import client3 from '../../images/customer-3.png';
@@ -31,6 +31,19 @@ const allClient = [
 const FeedBack = () => {
    const [clients, setClients] = useState(allClient);
 //    console.log(clients);
+
+  
+    // //this is for rivew
+    // const [feedBacks, setFeedBacks] = useState([]);
+    // useEffect(()=>{
+    //     fetch("http://localhost:5000/feedBackCard")
+    //     .then(res => res.json())
+    //     .then(result =>{
+    //         setFeedBacks(result)
+    //     })
+    //   },[])
+    //   console.log(feedBacks);
+
   return (
     <section className="mt-5">
       <h2 className="text-center">
@@ -41,6 +54,8 @@ const FeedBack = () => {
         {
             clients.map(clientData => <FeedBackData key={clientData.name} client={clientData}></FeedBackData> )
         }
+
+        
         </div>
     </section>
   );

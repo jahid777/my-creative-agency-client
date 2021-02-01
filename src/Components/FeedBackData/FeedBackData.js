@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './FeedBackData.css';
 
 const FeedBackData = (props) => {
     const {img, name, title, description} = props.client;
+  
+    
+   
     return (
+        
         <main className="main-section mt-5 mb-2 col-md-3">
             <div>
                 <div className="d-flex">
@@ -19,6 +23,7 @@ const FeedBackData = (props) => {
                  <div className="text-center"> <p>{description}</p></div>
             </div>
         </main>
+       
     );
 };
 

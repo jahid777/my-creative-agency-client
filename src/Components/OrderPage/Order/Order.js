@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ServiceContext, UserContext } from "../../../App";
 import uploadIcon from "../../../images/icons/upload.png";
+import MainOrderPage from "../MainOrderPage/MainOrderPage";
 import "./Order.css";
 
 const Order = () => {

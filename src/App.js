@@ -12,6 +12,9 @@ import Service from './Components/Service/Service';
 import ServiceData from './Components/ServiceData/ServiceData';
 import NotFound from './Components/Shared/NotFound/NotFound';
 import OrderList from './Components/OrderPage/OrderList/OrderList';
+import FeedBack from './Components/FeedBack/FeedBack';
+import FeedBackData from './Components/FeedBackData/FeedBackData';
+import ClientsReview from './Components/ClientsReview/ClientsReview';
 
  export const UserContext = createContext();
  export const ServiceContext = createContext();
@@ -32,6 +35,10 @@ const App = () => {
            <MainOrderPage></MainOrderPage>
         </PrivateRoute>
 
+        <PrivateRoute path="/clientsReview">
+           <ClientsReview></ClientsReview>
+        </PrivateRoute>
+
         <PrivateRoute path="/service">
            <Service></Service>
         </PrivateRoute>
@@ -44,11 +51,19 @@ const App = () => {
            <ServiceData></ServiceData>
         </PrivateRoute>
 
+        <PrivateRoute path="/feedBack">
+           <FeedBack></FeedBack>
+        </PrivateRoute>
+
+        <PrivateRoute path="/feedBackData">
+           <FeedBackData></FeedBackData>
+        </PrivateRoute>
+
         <Route path="/login">
            <Login></Login>
         </Route>
 
-        <Route path="/">
+        <Route path="*">
            <NotFound></NotFound>
         </Route>
       </Switch>

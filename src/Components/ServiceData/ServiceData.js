@@ -10,7 +10,7 @@ const ServiceData = (props) => {
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [serviceCard, setServiceCard] = useContext(ServiceContext);
-console.log(serviceCard);
+  console.log(serviceCard);
   
   const handleServiceCard = (data) => {
     const singleData = {...data}

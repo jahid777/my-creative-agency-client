@@ -7,17 +7,20 @@ import ServiceData from '../ServiceData/ServiceData';
 
 
 const allService = [
-    {
+    {  
+         id: 1,
         img: icon1,
         title: 'Web & Mobile design',
         description: 'We craft stunning and amazing web UI, using a well drrafted UX to fit your product.'
     },
     {
+        id: 2,
         img: icon2,
         title: 'Graphic design',
         description: 'Amazing flyers, social media posts and brand representations that would make your brand stand out.'
     },
     {
+        id: 3,
         img: icon3,
         title: 'Web development',
         description: 'With well written codes, we build amazing apps for all platforms, mobile and web apps in general.'
@@ -33,7 +36,7 @@ const Service = () => {
 
             <div class="card-deck mx-5 my-5 mt-5">
             {
-                services.map(serviceData => <ServiceData key={serviceData.title} service={serviceData}></ServiceData> )
+                services.map(serviceData => <ServiceData key={serviceData.id} service={serviceData}></ServiceData> )
             }
             </div>
 
