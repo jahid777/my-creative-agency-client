@@ -34,7 +34,7 @@ const Service = () => {
         <section style={{marginTop:'180px'}}>
             <h2 style={{textAlign:'center'}}>Provide awesome <span style={{color:'#7AB259'}}>services</span></h2>
 
-            <div class="card-deck mx-5 my-5 mt-5">
+            <div class="card-deck mx-5 my-5 mt-5 row">
             {
                 services.map(serviceData => <ServiceData key={serviceData.id} service={serviceData}></ServiceData> )
             }

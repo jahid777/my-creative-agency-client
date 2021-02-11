@@ -16,7 +16,7 @@ const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
-  let { from } = location.state || { from: { pathname: "/" } };
+  let { from } = location.state || { from: { pathname: "/orderList" } };
 
   const handleGoogleSign = () => {
     var googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -26,6 +26,7 @@ const Login = () => {
         const signedInUser = { gmailName: displayName, email, photoURL };
         setLoggedInUser(signedInUser);
         history.replace(from);
+        storeAuthToken();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -33,6 +34,17 @@ const Login = () => {
         console.log(errorCode, errorMessage);
       });
   };
+
+
+  const storeAuthToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        sessionStorage.setItem('token', idToken);
+        history.replace(from);
+      }).catch(function (error) {
+        // Handle error
+      });
+  }
   return (
     <div>
       <div style={{ textAlign: "center" }}>

@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ServiceContext, UserContext } from "../../../App";
 import uploadIcon from "../../../images/icons/upload.png";
-import MainOrderPage from "../MainOrderPage/MainOrderPage";
+import Sidebar from "../Sidebar/Sidebar";
 import "./Order.css";
 
 const Order = () => {
@@ -11,43 +11,84 @@ const Order = () => {
   const history = useHistory();
   //akhne email ar card ar data ek kore server a post krsi
   const [allData, setAllData] = useState([]);
-
-  const handleSubmit = (e) => {
-    fetch("http://localhost:5000/addCourse", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(allData),
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data) {
-          // alert("data submited");
-          // history.push("/eventCard");
-        }
-        //    history.push('/home') //form ta jate submit hoia registration component a chole jabe
-      });
-    e.preventDefault();
-    alert("data submitted");
-    history.push("/orderList");
-  };
+  console.log(allData);
+  // //ata input ar data ar service ar loggedinUser ar data ase
+  // const handleSubmit = (e) => {
+  //   fetch("http://localhost:5000/addCourse", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(allData),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data) {
+  //         // alert("data submited");
+  //         // history.push("/eventCard");
+  //       }
+  //       //    history.push('/home') //form ta jate submit hoia registration component a chole jabe
+  //     });
+  //   e.preventDefault();
+  //   alert("data submitted");
+  //   history.push("/orderList");
+  // };
 
   const handleChange = (e) => {
-    const newUserInfo = { ...loggedInUser, ...serviceCard };
+    const newUserInfo = { ...loggedInUser, ...serviceCard, ...allData };
     newUserInfo[e.target.name] = e.target.value;
     setAllData(newUserInfo);
   };
-  
-  const setFile = () => {};
+   const[file, setFile] = useState(null);
+   const handleFile = (e) => {
+      const newFile = e.target.files[0]
+      setFile(newFile)
+   };
+
+   const handleSubmit = (e) =>{
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('gmailName', allData.gmailName)
+    formData.append('inputName', allData.inputName)
+    formData.append('email', allData.email)
+    formData.append('inputEmail', allData.inputEmail)
+    formData.append('photoURL', allData.photoURL)
+    formData.append('id', allData.id)
+    formData.append('img', allData.img)
+    formData.append('inputDescription', allData.inputDescription)
+    formData.append('description', allData.description)
+    formData.append('title', allData.title)   
+    formData.append('price', allData.price)
+
+    fetch('http://localhost:5000/addACustomer', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data){
+        alert("data submitted") 
+       }
+    })
+    .catch(error => {
+      console.error(error)
+    })
+    
+    history.push("/orderList"); 
+    e.preventDefault();
+
+   }
   
   return (
-    <div className="rightOption">
-      <form onSubmit={handleSubmit} className="order-form" action="">
+    <div className="rightOption row">
+      <div className="col-md-3">
+         <Sidebar></Sidebar>
+      </div>
+      <form onSubmit={handleSubmit} className="order-form col-md-9 mt-5" style={{backgroundColor:'#F4F7FC'}}>
         <div className="form-group">
           <input
             type="text"
-            name="name"
+            name="inputName"
             placeholder="Your name / Company's name"
             id=""
             onChange={handleChange}
@@ -56,7 +97,7 @@ const Order = () => {
 
           <input
             type="email"
-            name="email"
+            name="inputEmail"
             placeholder="Your email address"
             id=""
             onChange={handleChange}
@@ -76,7 +117,7 @@ const Order = () => {
 
           <textarea
             type="text-area"
-            name="description"
+            name="inputDescription"
             placeholder="Enter Description "
             id=""
             onChange={handleChange}
@@ -99,6 +140,7 @@ const Order = () => {
             </div>
             <div className="col ml-2 ">
               <input
+                onChange={handleFile}
                 name="file"
                 id="upload"
                 type="file"

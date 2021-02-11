@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../../App';
+import Sidebar from '../Sidebar/Sidebar';
 
 const Review = () => {
     const history = useHistory();
@@ -19,10 +20,10 @@ const Review = () => {
       .then(res => res.json())
       .then(data => {
         if (data) {
-          // alert("data submited");
-          // history.push("/eventCard");
+          // alert("data submitted");
+          // history.push("/");
         }
-        //    history.push('/home') //form ta jate submit hoia registration component a chole jabe
+       
       });
     e.preventDefault();
     alert("data submitted");
@@ -34,8 +35,11 @@ const Review = () => {
      SetReviewData(newUserInfo);    
     }
     return (
-        <div className="rightOption">
-      <form onSubmit={handleSubmitReview} className="order-form" action="">
+        <div className="rightOption row">
+          <div className="col-md-3">
+             <Sidebar></Sidebar>
+          </div>
+      <form onSubmit={handleSubmitReview} className="order-form col-md-9 mt-5" style={{backgroundColor:'#F4F7FC'}}>
         <div className="form-group">
           <input
             type="text"

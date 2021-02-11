@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../../images/logos/logo.png';
 import './Navbar.css';
 
@@ -50,9 +50,11 @@ const Navbar = () => {
           </li>
 
           <li className="nav-item">
-              <button className="main-button">
+          <Link to="/Dashboard">
+                <button className="main-button">
                   Login
               </button>
+          </Link>             
           </li>
            
         </ul>

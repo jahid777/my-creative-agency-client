@@ -7,57 +7,98 @@ import {
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/Login/PrivateRoute';
-import MainOrderPage from './Components/OrderPage/MainOrderPage/MainOrderPage';
 import Service from './Components/Service/Service';
 import ServiceData from './Components/ServiceData/ServiceData';
 import NotFound from './Components/Shared/NotFound/NotFound';
 import OrderList from './Components/OrderPage/OrderList/OrderList';
 import FeedBack from './Components/FeedBack/FeedBack';
-import FeedBackData from './Components/FeedBackData/FeedBackData';
 import ClientsReview from './Components/ClientsReview/ClientsReview';
+import Dashboard from './Components/OrderPage/DashBoard/Dashboard';
+import Order from './Components/OrderPage/Order/Order';
+import Review from './Components/OrderPage/Review/Review';
+import ServiceList from './Components/OrderPage/ServiceList/ServiceList';
+import MakeAdmin from './Components/OrderPage/MakeAdmin/MakeAdmin';
+import AddService from './Components/OrderPage/AddService/AddService';
+import NewService from './Components/OrderPage/MainNewService/NewService/NewService';
+import NewServiceData from './Components/OrderPage/MainNewService/NewServiceData/NewServiceData';
+
 
  export const UserContext = createContext();
  export const ServiceContext = createContext();
+ export const NewServiceContext = createContext();
+ 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [serviceCard, setServiceCard] = useState({});
+  const [newServiceCard, setNewServiceCard] = useState({});
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}> 
     <ServiceContext.Provider value={[serviceCard, setServiceCard]}>
+       <NewServiceContext.Provider value={[newServiceCard, setNewServiceCard]}>
     <Router>
       <Switch>
         <Route exact path="/">
            <Home></Home>
         </Route>
 
-        <PrivateRoute path="/mainOrderPage">
-           <MainOrderPage></MainOrderPage>
+
+        <PrivateRoute path="/dashboard">
+           <Dashboard></Dashboard>
         </PrivateRoute>
 
-        <PrivateRoute path="/clientsReview">
+        <Route path="/clientsReview">
            <ClientsReview></ClientsReview>
-        </PrivateRoute>
+        </Route>
 
-        <PrivateRoute path="/service">
+        <Route path="/order">
+           <Order></Order>
+        </Route>
+
+        <Route path="/review">
+           <Review></Review>
+        </Route>
+
+
+        <Route path="/service">
            <Service></Service>
+        </Route>
+
+        <Route path="/serviceList">
+           <ServiceList></ServiceList>
+        </Route>
+
+        <PrivateRoute path="/newService">
+           <NewService></NewService>
         </PrivateRoute>
 
-        <PrivateRoute path="/orderList">
+        <Route path="/newServiceData">
+           <NewServiceData></NewServiceData>
+        </Route>
+
+        <Route path="/addService">
+           <AddService></AddService>
+        </Route>
+
+        <Route path="/makeAdmin">
+           <MakeAdmin></MakeAdmin>
+        </Route>
+
+        <Route path="/orderList">
            <OrderList></OrderList>
-        </PrivateRoute>
+        </Route>
 
-        <PrivateRoute path="/serviceData">
+        <Route path="/serviceData">
            <ServiceData></ServiceData>
-        </PrivateRoute>
+        </Route>
 
-        <PrivateRoute path="/feedBack">
+        <Route path="/feedBack">
            <FeedBack></FeedBack>
-        </PrivateRoute>
+        </Route>
 
-        <PrivateRoute path="/feedBackData">
+        {/* <PrivateRoute path="/feedBackData">
            <FeedBackData></FeedBackData>
-        </PrivateRoute>
+        </PrivateRoute> */}
 
         <Route path="/login">
            <Login></Login>
@@ -68,6 +109,7 @@ const App = () => {
         </Route>
       </Switch>
     </Router>
+    </NewServiceContext.Provider>
     </ServiceContext.Provider>
     </UserContext.Provider>
   );

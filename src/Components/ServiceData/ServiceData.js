@@ -13,14 +13,16 @@ const ServiceData = (props) => {
   console.log(serviceCard);
   
   const handleServiceCard = (data) => {
+   
     const singleData = {...data}
-    setServiceCard(singleData);
-    history.push('/mainOrderPage')
+    setServiceCard(singleData);  
+    
+    history.push('/order')
   }
   
   return (
     
-      <div onClick={()=>handleServiceCard(props.service)} class="card service-card-style">
+      <div onClick={()=>handleServiceCard(props.service)} class="card service-card-style col-md-4">
         <img style={{height:'74px',width:'74px',margin:'15px auto'}} src={img} class="card-img-top" alt="..."/>
         <div class="card-body mb-5">
           <h5 class="card-title text-center">{title}</h5>
@@ -28,6 +30,7 @@ const ServiceData = (props) => {
             {description}
           </p>
         </div>
+
       </div>
    
   );

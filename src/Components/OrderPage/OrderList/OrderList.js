@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
 import img from '../../../images/customer-1.png';
+import Sidebar from '../Sidebar/Sidebar';
 import './OrderList.css';
 
-const ServiceList = () => {
+const ServiceList = () => {   
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    // const [emails, setEmails] = useState(loggedInUser.email);
+
+
     const [orderCard , setOrderCard] = useState([]);
     useEffect(()=>{
       fetch("http://localhost:5000/getOrderCard?email=" +
@@ -13,10 +17,15 @@ const ServiceList = () => {
       .then(result =>{
           setOrderCard(result)
       })
-    },[loggedInUser.email])
+    },[])
     // console.log(orderCard);
+    
     return (
        <div className="row">
+           <div className="col-md-3">
+           <Sidebar></Sidebar>
+           </div>
+           <div className="col-md-9 card-deck mt-4" style={{backgroundColor:'#F4F7FC'}}>
            {
                orderCard.map((data, index)=> (
 
@@ -40,6 +49,7 @@ const ServiceList = () => {
         </section>
                ))
            }
+           </div>
        </div>
     );
 };
