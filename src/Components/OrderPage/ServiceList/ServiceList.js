@@ -3,13 +3,31 @@ import Sidebar from "../Sidebar/Sidebar";
 
 const ServiceList = () => {
   const [allData, setAllData] = useState([]);
-  console.log("here", allData);
+  // console.log("here", allData);
   useEffect(() => {
     fetch("http://localhost:5000/getOrderPic")
       .then((res) => res.json())
       .then((data) => setAllData(data));
   }, []);
      
+
+  const [status, setStatus] = useState("pending");
+  useEffect(()=>{
+    fetch("http://localhost:5000/statusData", {
+            method: "POST",           
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(status),
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data) {
+                console.log(data);
+              }
+            });       
+  },[status])
+ 
   return (
     <section className="row">
       <div className="col-md-3">
@@ -35,10 +53,13 @@ const ServiceList = () => {
                 <td>{dt.inputDescription}</td>
 
                 <td>
-                  <select style={{border:'none', outline:'none',backgroundColor:'#F4F7FC'}}>
-                      <option value="pending">Pending</option>
-                      <option value="done">Done</option>
-                      <option value="onGoing">On Going</option>
+                  <select onChange={(e)=>{
+                     const selectedStatus= e.target.value;
+                    setStatus(selectedStatus)
+                  }} style={{border:'none', outline:'none',backgroundColor:'#F4F7FC'}}>
+                  <option name="pending" value="pending">Pending</option>
+                      <option name="done" value="done">Done</option>
+                      <option name="onGoing" value="onGoing">On Going</option>
                   </select>
                 </td>
               </tr>

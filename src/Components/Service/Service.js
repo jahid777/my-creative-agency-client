@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import icon1 from '../../images/icons/service1.png';
 import icon2 from '../../images/icons/service2.png';
 import icon3 from '../../images/icons/service3.png';
@@ -28,13 +28,19 @@ const allService = [
 ]
 
 const Service = () => {
-    const [services, setServices] = useState(allService)
-    // console.log(services);
+    const [services, setServices] = useState([])
+    useEffect(()=>{
+        fetch("http://localhost:5000/newService")
+        .then(res => res.json())
+        .then(result => {
+            setServices(result)
+        });
+    },[])
     return (
         <section style={{marginTop:'180px'}}>
             <h2 style={{textAlign:'center'}}>Provide awesome <span style={{color:'#7AB259'}}>services</span></h2>
 
-            <div class="card-deck mx-5 my-5 mt-5 row">
+            <div class="row mx-5 my-5 mt-5 card-deck">
             {
                 services.map(serviceData => <ServiceData key={serviceData.id} service={serviceData}></ServiceData> )
             }

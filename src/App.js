@@ -19,23 +19,21 @@ import Review from './Components/OrderPage/Review/Review';
 import ServiceList from './Components/OrderPage/ServiceList/ServiceList';
 import MakeAdmin from './Components/OrderPage/MakeAdmin/MakeAdmin';
 import AddService from './Components/OrderPage/AddService/AddService';
-import NewService from './Components/OrderPage/MainNewService/NewService/NewService';
-import NewServiceData from './Components/OrderPage/MainNewService/NewServiceData/NewServiceData';
+
 
 
  export const UserContext = createContext();
  export const ServiceContext = createContext();
- export const NewServiceContext = createContext();
+
  
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [serviceCard, setServiceCard] = useState({});
-  const [newServiceCard, setNewServiceCard] = useState({});
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}> 
     <ServiceContext.Provider value={[serviceCard, setServiceCard]}>
-       <NewServiceContext.Provider value={[newServiceCard, setNewServiceCard]}>
+       
     <Router>
       <Switch>
         <Route exact path="/">
@@ -51,9 +49,9 @@ const App = () => {
            <ClientsReview></ClientsReview>
         </Route>
 
-        <Route path="/order">
+        <PrivateRoute path="/order">
            <Order></Order>
-        </Route>
+        </PrivateRoute>
 
         <Route path="/review">
            <Review></Review>
@@ -68,13 +66,7 @@ const App = () => {
            <ServiceList></ServiceList>
         </Route>
 
-        <PrivateRoute path="/newService">
-           <NewService></NewService>
-        </PrivateRoute>
 
-        <Route path="/newServiceData">
-           <NewServiceData></NewServiceData>
-        </Route>
 
         <Route path="/addService">
            <AddService></AddService>
@@ -109,7 +101,7 @@ const App = () => {
         </Route>
       </Switch>
     </Router>
-    </NewServiceContext.Provider>
+    
     </ServiceContext.Provider>
     </UserContext.Provider>
   );

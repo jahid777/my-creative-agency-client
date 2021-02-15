@@ -101,7 +101,7 @@ const Order = () => {
             placeholder="Your email address"
             id=""
             onChange={handleChange}
-            defaultValue={loggedInUser.email}
+            defaultValue={loggedInUser.email}           
             required
           />
 

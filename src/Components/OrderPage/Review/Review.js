@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const Review = () => {
     const history = useHistory();
-    const [reviewData, SetReviewData] = useState([]);
+    const [reviewData, setReviewData] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
    //input ar data review te creat kortesi
@@ -32,7 +32,7 @@ const Review = () => {
     const handleChangeReview = (e) => {
       const newUserInfo = {...reviewData}
      newUserInfo[e.target.name] = e.target.value;
-     SetReviewData(newUserInfo);    
+     setReviewData(newUserInfo);    
     }
     return (
         <div className="rightOption row">

@@ -19,6 +19,11 @@ const ServiceList = () => {
       })
     },[])
     // console.log(orderCard);
+
+    const designImg ={
+        height: '80px',
+        marginLeft:'10px'
+    }
     
     return (
        <div className="row">
@@ -33,7 +38,14 @@ const ServiceList = () => {
             <div>
                 <div className="d-flex">
                    <div className="mt-3 mb-3">
-                     <img style={{height:'80px',marginLeft:'10px'}} src={data.img} alt=""/>
+                     {/* <img style={{height:'80px',marginLeft:'10px'}} src={data.img} alt=""/> */}
+
+                     {
+            data?.addImage ? <img src={`data:image/png;base64,${data?.addImage.img}`} style={designImg} alt="" class="card-img-top"/>
+            :<img src={`http://localhost:5000/${data?.addImage?.img}`} alt="..." style={designImg} class="card-img-top"/>
+          }
+
+
                    </div>
                    <div className="mt-5" style={{marginLeft:'auto'}}>
                        <button className="btn btn-warning">pending</button>

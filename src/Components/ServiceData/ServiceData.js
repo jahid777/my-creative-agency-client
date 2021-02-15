@@ -4,30 +4,37 @@ import { ServiceContext, UserContext } from "../../App";
 import './ServiceData.css';
 
 
-const ServiceData = (props) => {
-  const { img, title, description } = props.service;
+const ServiceData = ({service}) => {
+  // const {title, description,addImage } = props.service;
   const history = useHistory();
+  console.log(service);
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [serviceCard, setServiceCard] = useContext(ServiceContext);
   console.log(serviceCard);
   
-  const handleServiceCard = (data) => {
-   
+  const handleServiceCard = (data) => {  
     const singleData = {...data}
-    setServiceCard(singleData);  
-    
+    setServiceCard(singleData);     
     history.push('/order')
   }
+  const designImg ={
+    height: '74px',
+    width:'74px',
+    margin:'15px auto'
+  }
   
-  return (
-    
-      <div onClick={()=>handleServiceCard(props.service)} class="card service-card-style col-md-4">
-        <img style={{height:'74px',width:'74px',margin:'15px auto'}} src={img} class="card-img-top" alt="..."/>
+  return (   
+      <div onClick={()=>handleServiceCard(service)} class="card service-card-style col-md-4">
+        
+        {
+            service?.addImage ? <img src={`data:image/png;base64,${service?.addImage.img}`} style={designImg} alt="" class="card-img-top"/>
+            :<img src={`http://localhost:5000/${service?.addImage?.img}`} alt="..." style={designImg} class="card-img-top"/>
+          }
         <div class="card-body mb-5">
-          <h5 class="card-title text-center">{title}</h5>
+          <h5 class="card-title text-center">{service.title}</h5>
           <p class="card-text text-center">
-            {description}
+            {service.description}
           </p>
         </div>
 
