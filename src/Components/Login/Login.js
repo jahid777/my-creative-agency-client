@@ -8,6 +8,8 @@ import googleIcon from '../../images/logos/google.png';
 import './Login.css';
 import {UserContext} from '../../App';
 
+//ata sidebarer import kore nisi jate refresh korle email ta state theke haraia na jay
+export const app = firebase.initializeApp(firebaseConfig);
 
 if(firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
@@ -16,16 +18,19 @@ const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
-  let { from } = location.state || { from: { pathname: "/orderList" } };
+  let { from } = location.state || { from: { pathname: "/" } };
+  console.log(loggedInUser.email);
 
   const handleGoogleSign = () => {
     var googleProvider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(googleProvider)
       .then((result) => {
+        // console.log(result);
         const { displayName, email, photoURL } = result.user;
         const signedInUser = { gmailName: displayName, email, photoURL };
         setLoggedInUser(signedInUser);
-        history.replace(from);
+        history.replace(from); 
+        // sessionStorage.setItem('info',signedInUser.email)      
         storeAuthToken();
       })
       .catch((error) => {

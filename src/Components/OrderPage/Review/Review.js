@@ -6,9 +6,11 @@ import Sidebar from '../Sidebar/Sidebar';
 const Review = () => {
     const history = useHistory();
     const [reviewData, setReviewData] = useState([]);
+    // console.log(reviewData);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+    // console.log(loggedInUser,"here it is");
    //input ar data review te creat kortesi
+   console.log(loggedInUser,"hey");
     const handleSubmitReview = (e) =>{
        fetch("http://localhost:5000/addReview", {
       method: "POST",
@@ -30,9 +32,9 @@ const Review = () => {
     history.push('/')
     }
     const handleChangeReview = (e) => {
-      const newUserInfo = {...reviewData}
+      const newUserInfo = {...reviewData,...loggedInUser}
      newUserInfo[e.target.name] = e.target.value;
-     setReviewData(newUserInfo);    
+     setReviewData(newUserInfo);  
     }
     return (
         <div className="rightOption row">

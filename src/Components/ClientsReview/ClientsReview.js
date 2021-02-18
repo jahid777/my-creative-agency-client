@@ -3,7 +3,7 @@ import { UserContext } from '../../App';
 import img from '../../images/logos/google.png';
 
 const ClientsReview = () => {
-
+ 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     // console.log(loggedInUser);
     //this is for rivew
@@ -15,7 +15,7 @@ const ClientsReview = () => {
             setFeedBacks(result)
         })
       },[])
-      // console.log(feedBacks);
+      console.log(feedBacks);
     //   //feedBackPic form server
 
      
@@ -40,7 +40,7 @@ const ClientsReview = () => {
                 <div  className="main-section mt-5 mb-2 col-md-3">
                 <div className="d-flex">
                    <div className="mt-3 mb-3">
-                     <img style={{height:'80px',marginLeft:'10px'}} src={img} alt=""/>
+                     <img style={{height:'80px',marginLeft:'10px'}} src={fdData?.photoURL} className="rounded-circle" alt=""/>
                    </div>
                    <div className="mt-4 ml-2">
                        <h4><b>{fdData.ReviewName}</b> </h4>

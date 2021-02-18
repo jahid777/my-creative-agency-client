@@ -5,18 +5,20 @@ import './ServiceData.css';
 
 
 const ServiceData = ({service}) => {
+  console.log(service,"this is the service data");
   // const {title, description,addImage } = props.service;
   const history = useHistory();
   console.log(service);
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [serviceCard, setServiceCard] = useContext(ServiceContext);
-  console.log(serviceCard);
+  
   
   const handleServiceCard = (data) => {  
     const singleData = {...data}
     setServiceCard(singleData);     
-    history.push('/order')
+    history.push('/order');
+    console.log(singleData,"this is the single data");
   }
   const designImg ={
     height: '74px',

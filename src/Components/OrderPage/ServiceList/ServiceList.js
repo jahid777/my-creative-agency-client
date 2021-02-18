@@ -12,13 +12,14 @@ const ServiceList = () => {
      
 
   const [status, setStatus] = useState("pending");
+  console.log(status);
   useEffect(()=>{
     fetch("http://localhost:5000/statusData", {
-            method: "POST",           
+            method: "POST",          
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(status),
+            body: JSON.stringify({status:status}),
           })
             .then(res => res.json())
             .then(data => {

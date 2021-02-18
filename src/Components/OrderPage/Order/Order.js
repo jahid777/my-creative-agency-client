@@ -12,27 +12,8 @@ const Order = () => {
   //akhne email ar card ar data ek kore server a post krsi
   const [allData, setAllData] = useState([]);
   console.log(allData);
-  // //ata input ar data ar service ar loggedinUser ar data ase
-  // const handleSubmit = (e) => {
-  //   fetch("http://localhost:5000/addCourse", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(allData),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (data) {
-  //         // alert("data submited");
-  //         // history.push("/eventCard");
-  //       }
-  //       //    history.push('/home') //form ta jate submit hoia registration component a chole jabe
-  //     });
-  //   e.preventDefault();
-  //   alert("data submitted");
-  //   history.push("/orderList");
-  // };
+  console.log(serviceCard,"this is service card");
+  
 
   const handleChange = (e) => {
     const newUserInfo = { ...loggedInUser, ...serviceCard, ...allData };
@@ -59,6 +40,8 @@ const Order = () => {
     formData.append('description', allData.description)
     formData.append('title', allData.title)   
     formData.append('price', allData.price)
+
+    console.log(allData,"this is all data");
 
     fetch('http://localhost:5000/addACustomer', {
       method: 'POST',

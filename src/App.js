@@ -45,17 +45,17 @@ const App = () => {
            <Dashboard></Dashboard>
         </PrivateRoute>
 
-        <Route path="/clientsReview">
+        <PrivateRoute path="/clientsReview">
            <ClientsReview></ClientsReview>
-        </Route>
+        </PrivateRoute>
 
         <PrivateRoute path="/order">
            <Order></Order>
         </PrivateRoute>
 
-        <Route path="/review">
+        <PrivateRoute path="/review">
            <Review></Review>
-        </Route>
+        </PrivateRoute>
 
 
         <Route path="/service">
