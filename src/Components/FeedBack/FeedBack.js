@@ -33,16 +33,6 @@ const FeedBack = () => {
 //    console.log(clients);
 
   
-    // //this is for rivew
-    // const [feedBacks, setFeedBacks] = useState([]);
-    // useEffect(()=>{
-    //     fetch("http://localhost:5000/feedBackCard")
-    //     .then(res => res.json())
-    //     .then(result =>{
-    //         setFeedBacks(result)
-    //     })
-    //   },[])
-    //   console.log(feedBacks);
 
   return (
     <section className="mt-5">

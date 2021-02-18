@@ -15,21 +15,7 @@ const ClientsReview = () => {
             setFeedBacks(result)
         })
       },[])
-      console.log(feedBacks);
-    //   //feedBackPic form server
-
-     
-
-      // const [feedBackPic, setFeedBackPic] = useState([])
-      // useEffect(()=>{
-      //     fetch("http://localhost:5000/getOrderPic")
-      //     .then(res => res.json())
-      //     .then(result =>{
-      //         setFeedBackPic(result)
-      //     })
-      //   },[])
-      //    // {`http://localhost:5000/${fdPic.file?.name}`} 
-      //   console.log(feedBackPic);
+      // console.log(feedBacks);
 
     return (
         

@@ -11,7 +11,7 @@ const ServiceList = () => {
   }, []);
      
 
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState("");
   console.log(status);
   useEffect(()=>{
     fetch("http://localhost:5000/statusData", {
@@ -28,6 +28,21 @@ const ServiceList = () => {
               }
             });       
   },[status])
+
+  const [statusData, setStatusData] = useState('');
+  // console.log(statusData._id);
+  useEffect(()=>{
+      fetch('http://localhost:5000/getStatus')
+      .then(res => res.json())
+      .then(data =>setStatusData(data[0]))
+  },[])
+
+ 
+
+
+  
+  
+
  
   return (
     <section className="row">
@@ -62,6 +77,7 @@ const ServiceList = () => {
                       <option name="done" value="done">Done</option>
                       <option name="onGoing" value="onGoing">On Going</option>
                   </select>
+                  
                 </td>
               </tr>
             ))}

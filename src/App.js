@@ -13,7 +13,6 @@ import NotFound from './Components/Shared/NotFound/NotFound';
 import OrderList from './Components/OrderPage/OrderList/OrderList';
 import FeedBack from './Components/FeedBack/FeedBack';
 import ClientsReview from './Components/ClientsReview/ClientsReview';
-import Dashboard from './Components/OrderPage/DashBoard/Dashboard';
 import Order from './Components/OrderPage/Order/Order';
 import Review from './Components/OrderPage/Review/Review';
 import ServiceList from './Components/OrderPage/ServiceList/ServiceList';
@@ -40,10 +39,6 @@ const App = () => {
            <Home></Home>
         </Route>
 
-
-        <PrivateRoute path="/dashboard">
-           <Dashboard></Dashboard>
-        </PrivateRoute>
 
         <PrivateRoute path="/clientsReview">
            <ClientsReview></ClientsReview>
