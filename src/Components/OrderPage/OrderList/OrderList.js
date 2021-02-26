@@ -14,7 +14,7 @@ const ServiceList = () => {
   const [orderCard, setOrderCard] = useState([]);
   console.log(orderCard,"here is order cardData");
   useEffect(() => {
-    fetch("http://localhost:5000/getOrderCard?email=" + loggedInUser.email)
+    fetch("https://mighty-hollows-14277.herokuapp.com/getOrderCard?email=" + loggedInUser.email)
       .then((res) => res.json())
       .then((result) => {
         setOrderCard(result);
@@ -29,7 +29,7 @@ const ServiceList = () => {
   //getting statusData
   const [statusData, setStatusData] = useState('')
   useEffect(()=>{
-      fetch('http://localhost:5000/getStatus')
+      fetch('https://mighty-hollows-14277.herokuapp.com/getStatus')
       .then(res => res.json())
       .then(data =>setStatusData(data))
   },[])
@@ -69,7 +69,7 @@ const ServiceList = () => {
                     />
                   ) : (
                     <img
-                      src={`http://localhost:5000/${dataInfo?.addImage?.img}`}
+                      src={`https://mighty-hollows-14277.herokuapp.com/${dataInfo?.addImage?.img}`}
                       alt="..."
                       style={designImg}
                       class="card-img-top"

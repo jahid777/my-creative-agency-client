@@ -43,7 +43,7 @@ const Order = () => {
 
     console.log(allData,"this is all data");
 
-    fetch('http://localhost:5000/addACustomer', {
+    fetch('https://mighty-hollows-14277.herokuapp.com/addACustomer', {
       method: 'POST',
       body: formData
     })

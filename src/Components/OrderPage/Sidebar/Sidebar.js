@@ -9,6 +9,7 @@ import addServicePic from "../../../images/icons/plus 1.png";
 import makeAdminPic from "../../../images/icons/person.png";
 import { UserContext } from "../../../App";
 import { app } from "../../Login/Login";
+import firebase from "firebase/app";
 
 
 const Sidebar = () => {
@@ -20,10 +21,12 @@ const Sidebar = () => {
 
   //ata korsi jate email ta state theke haraia na jay reload dile porer useEffect a state ta dependency set kroe disi ata google method ..sob jaygay ata use korbo loggedInUser jate vanish na hoy reload dile
   useEffect(()=>{
-      const unsubscribe = app.auth().onAuthStateChanged(user => {
-        setLoggedInUser({email:user.email, photoURL:user.photoURL}); //loggedInUser ar ja ja send korte chay sob akhne dia set kore dibo
-      });
-      return unsubscribe;
+      // if(firebase.apps.length === 0){}
+        const unsubscribe = app.auth().onAuthStateChanged(user => {
+          setLoggedInUser({email:user.email, photoURL:user.photoURL}); //loggedInUser ar ja ja send korte chay sob akhne dia set kore dibo
+        });
+        return unsubscribe; 
+        
   },[])
 
   // const getEmail = sessionStorage.getItem('info')
@@ -33,7 +36,7 @@ const Sidebar = () => {
 
   
   useEffect(()=>{
-    fetch(`http://localhost:5000/isAdminData?email=${loggedInUser.email}`)
+    fetch(`https://mighty-hollows-14277.herokuapp.com/isAdminData?email=${loggedInUser.email}`)
     .then((res) => res.json())
     .then((data) => {
       if (data.admin === true) {
@@ -125,7 +128,7 @@ export default Sidebar;
 //     const [loggedInUser, setsetLoggedInUser] = useContext(UserContext);
 //     const [isAdmin, setIsAdmin] = useState(true);
 
-//     fetch("http://localhost:5000/isAdminData", {
+//     fetch("https://mighty-hollows-14277.herokuapp.com/isAdminData", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json"

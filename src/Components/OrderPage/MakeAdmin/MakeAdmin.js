@@ -6,7 +6,7 @@ const MakeAdmin = () => {
      
 
     const handleSubmit = (e) => {
-        fetch("http://localhost:5000/admin", {
+        fetch("https://mighty-hollows-14277.herokuapp.com/admin", {
             method: "POST",           
             headers: {
               "Content-Type": "application/json"

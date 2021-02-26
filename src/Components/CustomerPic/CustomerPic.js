@@ -4,14 +4,14 @@ import ClientsReview from '../ClientsReview/ClientsReview';
 const CustomerPic = () => {
     const [customerImg, setCustomerImg] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/getOrderPic")
+        fetch("https://mighty-hollows-14277.herokuapp.com/getOrderPic")
         .then(res => res.json())
         .then(result =>{
             setCustomerImg(result)
             console.log(result);
         })
       },[])
-       // {`http://localhost:5000/${fdPic.file?.name}`} 
+       // {`https://mighty-hollows-14277.herokuapp.com/${fdPic.file?.name}`} 
       console.log(customerImg);
    
       

@@ -5,7 +5,7 @@ const ServiceList = () => {
   const [allData, setAllData] = useState([]);
   // console.log("here", allData);
   useEffect(() => {
-    fetch("http://localhost:5000/getOrderPic")
+    fetch("https://mighty-hollows-14277.herokuapp.com/getOrderPic")
       .then((res) => res.json())
       .then((data) => setAllData(data));
   }, []);
@@ -14,7 +14,7 @@ const ServiceList = () => {
   const [status, setStatus] = useState("");
   console.log(status);
   useEffect(()=>{
-    fetch("http://localhost:5000/statusData", {
+    fetch("https://mighty-hollows-14277.herokuapp.com/statusData", {
             method: "POST",          
             headers: {
               "Content-Type": "application/json"
@@ -32,16 +32,10 @@ const ServiceList = () => {
   const [statusData, setStatusData] = useState('');
   // console.log(statusData._id);
   useEffect(()=>{
-      fetch('http://localhost:5000/getStatus')
+      fetch('https://mighty-hollows-14277.herokuapp.com/getStatus')
       .then(res => res.json())
       .then(data =>setStatusData(data[0]))
   },[])
-
- 
-
-
-  
-  
 
  
   return (
@@ -49,7 +43,7 @@ const ServiceList = () => {
       <div className="col-md-3">
         <Sidebar></Sidebar>
       </div>
-      <div className="col-md-8 mt-4" style={{ backgroundColor: "#F4F7FC"}}>
+      <div className="col-md-8 mt-4" style={{ backgroundColor: "#F4F7FC", width:'auto'}}>
         <table class="table mt-5">
           <thead style={{ backgroundColor: "#FFFFFF" }}>
             <tr>

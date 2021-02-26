@@ -12,7 +12,7 @@ const Review = () => {
    //input ar data review te creat kortesi
    console.log(loggedInUser,"hey");
     const handleSubmitReview = (e) =>{
-       fetch("http://localhost:5000/addReview", {
+       fetch("https://mighty-hollows-14277.herokuapp.com/addReview", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

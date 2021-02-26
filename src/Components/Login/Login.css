@@ -37,3 +37,33 @@
     margin-top: 10px;
     margin-right: 70px;
 }
+
+
+
+@media(max-width: 1200px){
+    .box-design{
+        margin: auto;
+        margin-top: 30px;
+        height: 300px;
+        width: 330px;
+    }
+    .google-sign-btn{
+        width: 320px;
+        height: 50px;
+        /* background-color: gray; */
+        margin: auto;
+        margin-top: 80px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .google-text{
+        margin: 5px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .text-div{
+        margin-top: 10px;
+        margin-right: 50px;
+    }
+}

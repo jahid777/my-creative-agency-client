@@ -31,7 +31,7 @@ const ServiceData = ({service}) => {
         
         {
             service?.addImage ? <img src={`data:image/png;base64,${service?.addImage.img}`} style={designImg} alt="" class="card-img-top"/>
-            :<img src={`http://localhost:5000/${service?.addImage?.img}`} alt="..." style={designImg} class="card-img-top"/>
+            :<img src={`https://mighty-hollows-14277.herokuapp.com/${service?.addImage?.img}`} alt="..." style={designImg} class="card-img-top"/>
           }
         <div class="card-body mb-5">
           <h5 class="card-title text-center">{service.title}</h5>

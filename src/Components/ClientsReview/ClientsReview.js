@@ -9,7 +9,7 @@ const ClientsReview = () => {
     //this is for rivew
     const [feedBacks, setFeedBacks] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/feedBackCard")
+        fetch("https://mighty-hollows-14277.herokuapp.com/feedBackCard")
         .then(res => res.json())
         .then(result =>{
             setFeedBacks(result)

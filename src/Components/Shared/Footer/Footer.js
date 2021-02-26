@@ -5,7 +5,7 @@ const Footer = () => {
   return (
    <section className="main-container">
         <footer className="row">
-      <div className="col-md-6 text-center">
+      <div className="col-md-6 text-center col-sm-12">
         <h2 className="mt-5">
           
           <b>
@@ -18,7 +18,7 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="col-md-6">
+      <div className="col-md-6 col-sm-12">
         <form className="mt-5">
           <div className="form-group input-style">
             <input
@@ -58,3 +58,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
